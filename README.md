@@ -45,7 +45,14 @@ pip install mamba-ssm[causal-conv1d]
 ```
 Try --no-build-isolation when using pip if the installation encounters issues.
 
-And if you encountered issues while installing flash-attention. Make sure that ninja is installed and that it works correctly (e.g. ninja --version then echo $? should return exit code 0). If not (sometimes ninja --version then echo $? returns a nonzero exit code), uninstall then reinstall ninja (pip uninstall -y ninja && pip install ninja). Without ninja, compiling can take a very long time (2h) since it does not use multiple CPU cores. With ninja compiling takes 3-5 minutes on a 64-core machine using CUDA toolkit. Then Transformer with Flash-Attention can be installed with:
+And if you encountered issues while installing flash-attention. 
+Make sure that `ninja` is installed and that it works correctly (e.g. `ninja
+--version` then `echo $?` should return exit code 0). If not (sometimes `ninja
+--version` then `echo $?` returns a nonzero exit code), uninstall then reinstall
+`ninja` (`pip uninstall -y ninja && pip install ninja`). Without `ninja`,
+compiling can take a very long time (2h) since it does not use multiple CPU
+cores. With `ninja` compiling takes 3-5 minutes on a 64-core machine using CUDA toolkit.
+Then Transformer with Flash-Attention can be installed with:
 
 ```
 pip install flash-attn --no-build-isolation
