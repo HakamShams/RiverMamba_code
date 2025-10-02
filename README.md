@@ -60,7 +60,7 @@ pip install flash-attn --no-build-isolation
 
 ### Vision Mamba
 
-Inside the models there is a [vim folder](models/vim). This is based on Vision Mamba works i.e., https://github.com/hustvl/Vim/tree/main/vim.
+Inside the models there is a [vim folder](models/vim). This is based on Vision Mamba works for example, https://github.com/hustvl/Vim/tree/main/vim.
 You have to copy the scripts inside this folder into their respective directory after you set up the environment.
 For example if you set up a virtual environment then [mamba_simple.py](models/vim/mamba_simple.py) and [mamba2_simple.py](models/vim/mamba2_simple.py) should be copied to the directory:
 
@@ -172,9 +172,9 @@ The index AIFAS represents the index along the x-axis.
 
 #### FUll resolution
 
-| name                                  | model      | domain | resolution           | # points   | target data       | trained   | reforecasts | download            |
-|:--------------------------------------|:-----------|:-------|:---------------------|:-----------|:------------------|:----------|:------------|:--------------------|
-| RiverMamba_glofas_reanalysis_full_map | RiverMamba | global | 3000 x 7200 at 0.05° | 6,221,926  | GloFAS reanalysis | 1979-2023 | 2024        | (in preparation...) |
+| name                                  | model      | domain | resolution           | # points   | target data       | trained   | reforecasts | download                                                       |
+|:--------------------------------------|:-----------|:-------|:---------------------|:-----------|:------------------|:----------|:------------|:---------------------------------------------------------------|
+| RiverMamba_glofas_reanalysis_full_map | RiverMamba | global | 3000 x 7200 at 0.05° | 6,221,926  | GloFAS reanalysis | 1979-2023 | 2024        | [RiverMamba_glofas_reanalysis_full_map](https://bonndata.uni-bonn.de/api/access/datafile/13856) |
 
 Each netcdf file in the RiverMamba_glofas_reanalysis_full_map reforecasts has 7 time steps representing the 7 days lead time. The name of the file represent the day at which the forecast was issued at 00:00 UTC.
 Each file has also 6221926 points along the x dimension. This represents points on land at 0.05° resolution.
@@ -195,10 +195,10 @@ All models are deterministic and produced without nowcasting.
 ├── inference_full_map.py
 ├── LICENSE
 ├── log
+│   └── index.gitkeep
 ├── lstm_repo
-│   ├── ....
+│   ├── ...
 │   │   ├── ...
-│   │   │   ├── ...
 ├── models
 │   ├── build.py
 │   ├── decoder
@@ -218,12 +218,45 @@ All models are deterministic and produced without nowcasting.
 │       ├── mamba2_simple.py
 │       ├── mamba_simple.py
 │       └── selective_scan_interface.py
+├── preprocessing_grdc
+│   ├── apply_grdc_mask
+│   │   ├── apply_obs_mask_cpc.py
+│   │   ├── apply_obs_mask_era5.py
+│   │   ├── apply_obs_mask_glofas.py
+│   │   ├── apply_obs_mask_hres.py
+│   │   ├── mask_GRDC_obs_points.nc
+│   │   └── nan_indices_era5obsmask.npy
+│   ├── filter_grdc.py
+│   ├── filter_local2utc0_grdc.py
+│   ├── grdctxt2csv.py
+│   ├── notebooks
+│   │   ├── local2utc0_google_output.ipynb
+│   │   ├── local2utc0_grdc_caravan.ipynb
+│   │   ├── local2utc0_grdc.ipynb
+│   │   ├── txt2csv.ipynb
+│   │   └── utc02local.ipynb
+│   ├── README.md
+│   └── time_convert
+│       ├── google2utc0.py
+│       └── utc0tolocal.py
 ├── README.md
 ├── requirements.txt
 ├── run_multinode_jsc.sh
 ├── run_multinode_marvin.sh
+├── scripts
+│   ├── donwload_era5_land_reanalysis.sh
+│   ├── donwload_glofas_reanalysis.sh
+│   ├── donwload_glofas_static.sh
+│   ├── donwload_pretrained_models.sh
+│   ├── donwload_reforecasts.sh
+│   ├── download_cpc.sh
+│   ├── download_ecmwf_hres.sh
+│   ├── exctract_era5_land_reanalysis.sh
+│   ├── extract_ecmwf_hres.sh
+│   └── extract_glofas_reanalysis.sh
 ├── serialization
 │   ├── curves
+│   │   └── index.gitkeep
 │   ├── generate_curves.py
 │   ├── gilbert.py
 │   ├── sweep_h.py
@@ -246,9 +279,6 @@ All models are deterministic and produced without nowcasting.
 
 ## Dataset
 
-[in preparation...]
-
-<!---
 - The full data set can be obtained from [https://doi.org/10.60507/FK2/T8QYWE](https://doi.org/10.60507/FK2/T8QYWE) (~ 10 TB after decompression).
   - CPC data: 16 GB 
   - ERA5-Land reanalysis data: ~7.6 TB
@@ -258,31 +288,36 @@ All models are deterministic and produced without nowcasting.
 
 - The data is compressed. ERA5-Land and ECMWF-HRES data are organized so that each year inside the directory has its own compressed files.
 
-- The data can be also downloaded via scripts found in [scripts](scripts) i.e., you can download the CPC data via [script/download_cpc.sh](scripts/download_cpc.sh) (~46 GB):
+- The data can be also downloaded via scripts found in [scripts](scripts), for example, you can download the CPC data via [script/download_cpc.sh](scripts/download_cpc.sh) (~46 GB):
   ```
-   wget --continue  https://bonndata.uni-bonn.de/api/access/datafile/xxxx -O CPC_Global.7z
+  cd <path_for_dataset>
+  wget --continue  https://bonndata.uni-bonn.de/api/access/datafile/13553 -O CPC_Global.7z
   ```
   To extract the files you need the 7-Zip package:
   ```
    sudo apt update
    sudo apt install p7zip-full
   ```
-  and for example to extract:
+  and for example to extract one file:
   ```
    7za x CPC_Global.7z
   ```
-
   ERA5-Land and ECMWF-HRES files are large, so they are split into smaller files. For example, after download to extract ERA5-Land data for the year 1979 just run:
   ```
    7za x 1979.7z.001
   ```
-  7z will find 1979.7z.002 1979.7z.003 1979.7z.004 automatically.
+  7z will find 1979.7z.002 1979.7z.003 1979.7z.004 automatically
+  
+  To extract multiply files inside a directory, you can use:
+  ```
+  find . -name '*.7z' -exec 7za x {} \;
+  ```
+  See also for the example the script [exctract_era5_land_reanalysis.sh](scripts/exctract_era5_land_reanalysis.sh)
 
-- You can visualize the data using the scripts in [vis](vis).
+- You can visualize the data using the scripts in [vis](vis)
 
-- All data are at 00:00 UTC time. The data are provided at daily basis and the timestamp is right-labeled: i.e. river discharge on 01/01/2024 correspond to the mean river discharge for the day of 12/31/2023.
+- All data are at 00:00 UTC time. The data are provided at daily basis and the timestamp is right-labeled: for example, river discharge on 01/01/2024 correspond to the mean river discharge for the day of 12/31/2023.
 
--->
 
 ### Citation
 If you find our work useful, please cite:
