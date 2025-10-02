@@ -63,7 +63,6 @@ for gauge_id, (lat, lon) in gauge_coords.items():
 #   (b) We reindex the data to a complete daily time series.
 #   (c) We detect gaps. For gaps shorter than 7 days, we fill missing days
 #       via linear interpolation; for longer gaps, we treat the data as separate segments;
-#       ### if the total missing gap days exceed 1500, we skip the CSV file.
 #   (d) We remove catchment areas smaller than 500 km².
 #   (e) For each continuous segment, we apply the weighted average conversion:
 #
