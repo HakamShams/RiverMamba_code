@@ -4,14 +4,14 @@ This folder includes all the scripts for processing GRDC data, applying GRDC mas
 
 ### GRDC preprocessing
 
-Step 0: download GRDC dataset from https://portal.grdc.bafg.de/applications/public.html?publicuser=PublicUser#dataDownload/Home;
+Step 0: download GRDC dataset from https://portal.grdc.bafg.de/applications/public.html?publicuser=PublicUser#dataDownload/Home; The GRDC dataset is originally stored as `txt` format and local time zone at daily scale.
 
 Step 1: Convert the downloaded GRDC dataset from `txt` to `csv` file.
 ```bash
 python grdctxt2csv.py
 ```
 
-Step 2: Filter out the GRDC dataset based by skiping files if catchment area is smaller than 500 km²; Fill in the observation gaps less than 7 days of dataset by linear intepolation; Convert local time of GRDC observation to UTC0; details are explained in the script.
+Step 2: Filter out the GRDC dataset based by skiping files if catchment area is smaller than 500 km²; Fill in the observation gaps less than 7 days of dataset by linear intepolation; Convert local time of GRDC observation to UTC0 to match our training dataset (everything in our dataset is under UTC0); details are explained in the script.
 
 ```bash
 python filter_local2utc0_grdc.py
@@ -49,7 +49,3 @@ The scripts in `./RiverMamba_code/preprocessing_grdc/time_convert/.` are explici
     ├── google2utc0.py
     └── utc0tolocal.py
 ```
-
-## Reference
-
-Nearing, G., Cohen, D., Dube, V. et al. Global prediction of extreme floods in ungauged watersheds. Nature 627, 559–563 (2024). https://doi.org/10.1038/s41586-024-07145-1.
