@@ -1,5 +1,6 @@
-[![Website](https://img.shields.io/badge/Website-RiverMamba-CBBD93.svg?logo=Leaflet)](https://hakamshams.github.io/RiverMamba/)
-[![ArXiv](https://img.shields.io/badge/ArXiv-2505.22535-CBBD93.svg?logo=arxiv)](https://doi.org/10.48550/arXiv.2505.22535)
+[![Website](https://img.shields.io/badge/Website-RiverMamba-C191B0.svg?logo=Leaflet)](https://hakamshams.github.io/RiverMamba/)
+[![ArXiv](https://img.shields.io/badge/ArXiv-2505.22535-C191B0.svg?logo=arxiv)](https://doi.org/10.48550/arXiv.2505.22535)
+[![Dataset](https://img.shields.io/badge/Dataset-Bonndata-99004C.svg?logo=googleanalytics&logoColor=FFFFFF)](https://doi.org/10.60507/FK2/T8QYWE)
 ![Python 3.10](https://img.shields.io/badge/python-3.10-purple.svg)
 ![License MIT](https://img.shields.io/badge/license-BSD--3--Clause-purple.svg)
 
@@ -219,26 +220,8 @@ All models are deterministic and produced without nowcasting.
 │       ├── mamba_simple.py
 │       └── selective_scan_interface.py
 ├── preprocessing_grdc
-│   ├── apply_grdc_mask
-│   │   ├── apply_obs_mask_cpc.py
-│   │   ├── apply_obs_mask_era5.py
-│   │   ├── apply_obs_mask_glofas.py
-│   │   ├── apply_obs_mask_hres.py
-│   │   ├── mask_GRDC_obs_points.nc
-│   │   └── nan_indices_era5obsmask.npy
-│   ├── filter_grdc.py
-│   ├── filter_local2utc0_grdc.py
-│   ├── grdctxt2csv.py
-│   ├── notebooks
-│   │   ├── local2utc0_google_output.ipynb
-│   │   ├── local2utc0_grdc_caravan.ipynb
-│   │   ├── local2utc0_grdc.ipynb
-│   │   ├── txt2csv.ipynb
-│   │   └── utc02local.ipynb
-│   ├── README.md
-│   └── time_convert
-│       ├── google2utc0.py
-│       └── utc0tolocal.py
+│   ├── ...
+│   │   ├── ...
 ├── README.md
 ├── requirements.txt
 ├── run_multinode_jsc.sh
