@@ -316,7 +316,7 @@ If you find our work useful, please cite:
 
 ### Acknowledgments
 
-This work was funded by the Federal Ministry of Research, Technology, and Space under grant no. 01|S24075A-D [RAINA](https://raina-project.de/) and by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) within the Collaborative Research Centre SFB 1502/1–2022 - [DETECT](https://sfb1502.de/) - [D05](https://sfb1502.de/projects/cluster-d/d05).
+This work was funded by the Federal Ministry of Research, Technology, and Space under grant no. 16|S24075C [RAINA](https://raina-project.de/) and by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) within the Collaborative Research Centre SFB 1502/1–2022 - [DETECT](https://sfb1502.de/) - [D05](https://sfb1502.de/projects/cluster-d/d05).
 
 ### License
 
