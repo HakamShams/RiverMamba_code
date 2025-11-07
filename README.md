@@ -184,7 +184,7 @@ You can visualize the full map reforecast using the script [visualize_Reforecast
 
 All models are deterministic and produced without nowcasting.
 
-The reforecast is also avaialbe on [Hugging Face](https://huggingface.co/datasets/HakamShams/RiverMamba_reforecasts/tree/main).
+The reforecast is also available on 🤗 [Hugging Face](https://huggingface.co/datasets/HakamShams/RiverMamba_reforecasts/tree/main).
 
 ### Structure
 ```
