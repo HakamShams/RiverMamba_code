@@ -1,6 +1,7 @@
 [![Website](https://img.shields.io/badge/Website-RiverMamba-C191B0.svg?logo=Leaflet)](https://hakamshams.github.io/RiverMamba/)
 [![ArXiv](https://img.shields.io/badge/ArXiv-2505.22535-C191B0.svg?logo=arxiv)](https://doi.org/10.48550/arXiv.2505.22535)
-[![Dataset](https://img.shields.io/badge/Dataset-Bonndata-99004C.svg?logo=googleanalytics&logoColor=FFFFFF)](https://doi.org/10.60507/FK2/T8QYWE)
+[![Dataset](https://img.shields.io/badge/Bonndata-Dataset_&_Reforecasts-99004C.svg?logo=googleanalytics&logoColor=FFFFFF)](https://doi.org/10.60507/FK2/T8QYWE)
+[![Hugging Face](https://img.shields.io/badge/HuggingFace-Reforecasts-99004C.svg?logo=HuggingFace&logoColor=FFD21E)](https://huggingface.co/datasets/HakamShams/RiverMamba_reforecasts/tree/main)
 ![Python 3.10](https://img.shields.io/badge/python-3.10-purple.svg)
 ![License MIT](https://img.shields.io/badge/license-BSD--3--Clause-purple.svg)
 
@@ -182,6 +183,8 @@ Each file has also 6221926 points along the x dimension. This represents points 
 You can visualize the full map reforecast using the script [visualize_Reforecast](vis/visualize_Reforecast.py).
 
 All models are deterministic and produced without nowcasting.
+
+The reforecast is also avaialbe on [Hugging Face](https://huggingface.co/datasets/HakamShams/RiverMamba_reforecasts/tree/main).
 
 ### Structure
 ```
