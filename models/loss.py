@@ -13,7 +13,7 @@ class MSE(nn.Module):
 
     def forward(self, input, target, weights=None):
         if weights is None:
-            loss = self.loss(input, target) * weights
+            loss = self.loss(input, target)
             loss = torch.nan_to_num(loss)
             return loss.mean()
         else:
@@ -29,7 +29,7 @@ class L1(nn.Module):
 
     def forward(self, input, target, weights=None):
         if weights is None:
-            loss = self.loss(input, target) * weights
+            loss = self.loss(input, target)
             loss = torch.nan_to_num(loss)
             return loss.mean()
         else:
