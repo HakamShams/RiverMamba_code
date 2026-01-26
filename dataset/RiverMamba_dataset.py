@@ -271,7 +271,7 @@ class RiverMamba_Dataset(Dataset):
         if self.variables_glofas_log1p:
             self._variables_glofas_log1p_indices = [self.variables_glofas.index(v) for v in self.variables_glofas_log1p]
             self._variables_glofas_norm_indices = [x for x in range(len(self.variables_glofas)) if
-                                                   x not in self._variables_glofas_log1p_indices]
+                                                   self.variables_glofas[x] not in self._variables_glofas_log1p_indices]
         else:
             self._variables_glofas_norm_indices = [x for x in range(len(self.variables_glofas))]
 
@@ -279,7 +279,7 @@ class RiverMamba_Dataset(Dataset):
             self._variables_era5_land_log1p_indices = [self.variables_era5_land.index(v) for v in
                                                        self.variables_era5_land_log1p]
             self._variables_era5_land_norm_indices = [x for x in range(len(self.variables_era5_land)) if
-                                                      x not in self._variables_era5_land_log1p_indices]
+                                                      self.variables_era5_land[x] not in self._variables_era5_land_log1p_indices]
         else:
             self._variables_era5_land_norm_indices = [x for x in range(len(self.variables_era5_land))]
 
@@ -287,14 +287,14 @@ class RiverMamba_Dataset(Dataset):
             self._variables_hres_forecast_log1p_indices = [self.variables_hres_forecast.index(v) for v in
                                                            self.variables_hres_forecast_log1p]
             self._variables_hres_norm_indices = [x for x in range(len(self.variables_hres_forecast)) if
-                                                 x not in self._variables_hres_forecast_log1p_indices]
+                                                 self.variables_hres_forecast[x] not in self._variables_hres_forecast_log1p_indices]
         else:
             self._variables_hres_norm_indices = [x for x in range(len(self.variables_hres_forecast))]
 
         if self.variables_cpc_log1p:
             self._variables_cpc_log1p_indices = [self.variables_cpc.index(v) for v in self.variables_cpc_log1p]
             self._variables_cpc_norm_indices = [x for x in range(len(self.variables_cpc)) if
-                                                x not in self.variables_cpc_log1p]
+                                                self.variables_cpc[x] not in self.variables_cpc_log1p]
         else:
             self._variables_cpc_norm_indices = [x for x in range(len(self.variables_cpc))]
 
